@@ -1,0 +1,26 @@
+/* AboutUs.css */
+.about-us-container {
+  margin: 20px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.about-us-container h1 {
+  color: #004b87;
+  text-align: center;
+}
+
+.about-us-container p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.about-us-container ul {
+  list-style-type: disc;
+  padding-left: 40px;
+}
+
+.about-us-container h2 {
+  margin-top: 20px;
+  color: #004b87;
+}
