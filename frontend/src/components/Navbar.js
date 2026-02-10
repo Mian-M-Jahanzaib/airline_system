@@ -1,54 +1,80 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { FaPlaneDeparture } from "react-icons/fa"; // Importing an icon for a pro look
+import { Link, useLocation } from 'react-router-dom';
+import { FaPlaneDeparture } from "react-icons/fa"; 
 
 function Navbar() {
+  const location = useLocation(); // Used to highlight the active link
+
+  // Helper to check if a link is active
+  const isActive = (path) => location.pathname === path;
+
   return (
-    // 'bg-blue-900' gives that deep corporate airline blue
-    // 'shadow-md' adds a subtle depth like a real header
-    <nav className="bg-blue-900 text-white shadow-md sticky top-0 z-50">
+    // Changed to 'bg-white' to match the cards in your other components
+    // Added 'border-b' to give it a clean separation line
+    <nav className="bg-white text-blue-900 shadow-lg sticky top-0 z-50 border-b border-gray-200">
       
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         
         {/* Left Side: Logo */}
         <Link to="/" className="flex items-center gap-3 group">
-            {/* Icon rotates slightly when you hover over the logo */}
-            <FaPlaneDeparture className="text-3xl text-blue-300 group-hover:rotate-12 transition-transform duration-300" />
-            <h1 className="text-2xl font-bold tracking-wide group-hover:text-blue-100 transition-colors">
+            {/* Icon is now Blue-900 to match the text */}
+            <div className="bg-blue-50 p-2 rounded-full group-hover:bg-blue-100 transition-colors">
+              <FaPlaneDeparture className="text-2xl text-blue-700 group-hover:rotate-12 transition-transform duration-300" />
+            </div>
+            <h1 className="text-2xl font-extrabold tracking-tight text-blue-900">
               UOG Airline
             </h1>
         </Link>
 
         {/* Right Side: Navigation Links */}
-        <ul className="flex items-center space-x-8 font-medium">
-          <li>
-            <Link to="/" className="hover:text-blue-300 transition-colors duration-200 py-2">
-              Home
-            </Link>
-          </li>
+        <ul className="flex items-center space-x-8 font-semibold text-gray-600">
           
-          {/* Highlighted 'Book Flight' button for emphasis */}
           <li>
-            <Link to="/book-flight" className="bg-blue-700 hover:bg-blue-600 px-5 py-2 rounded-full transition-all duration-300 shadow-sm hover:shadow-lg">
-              Book Flight
+            <Link 
+              to="/" 
+              className={`transition-colors duration-200 hover:text-blue-700 ${isActive('/') ? 'text-blue-900 font-bold' : ''}`}
+            >
+              Home
             </Link>
           </li>
 
           <li>
-            <Link to="/view-booking" className="hover:text-blue-300 transition-colors duration-200 py-2">
-              View Booking
+            <Link 
+              to="/view-booking" 
+              className={`transition-colors duration-200 hover:text-blue-700 ${isActive('/view-booking') ? 'text-blue-900 font-bold' : ''}`}
+            >
+              My Trips
             </Link>
           </li>
+
           <li>
-            <Link to="/contact-us" className="hover:text-blue-300 transition-colors duration-200 py-2">
-              Contact Us
+            <Link 
+              to="/about-us" 
+              className={`transition-colors duration-200 hover:text-blue-700 ${isActive('/about-us') ? 'text-blue-900 font-bold' : ''}`}
+            >
+              About
             </Link>
           </li>
+
           <li>
-            <Link to="/about-us" className="hover:text-blue-300 transition-colors duration-200 py-2">
-              About Us
+            <Link 
+              to="/contact-us" 
+              className={`transition-colors duration-200 hover:text-blue-700 ${isActive('/contact-us') ? 'text-blue-900 font-bold' : ''}`}
+            >
+              Contact
             </Link>
           </li>
+
+          {/* "Book Flight" is now the primary Call-to-Action button */}
+          <li>
+            <Link 
+              to="/book-flight" 
+              className="bg-blue-900 text-white px-6 py-2.5 rounded-full font-bold shadow-md hover:bg-blue-800 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
+            >
+              Book Flight
+            </Link>
+          </li>
+
         </ul>
 
       </div>
